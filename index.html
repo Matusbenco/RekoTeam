@@ -11,29 +11,26 @@
 </head>
 <body>
 
-   <header class="header">
-    <div class="container-header">
-        <div class="logo"><strong>REKO</strong> Team</div>
-        
-        <nav class="navigation">
-            <a href="#sluzby">Služby</a>
-            <a href="#o-nas">O nás</a>
-            <a href="#projekty">Projekty</a>
-            <a href="#kontakt">Kontakt</a>
-        </nav>
-
-        <button class="hamburger-menu" aria-label="Otevřít menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <a href="tel:+420722693881" class="cta-button-header">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            +420 722 693 881
-        </a>
-    </div>
-</header>
+    <header class="header">
+        <div class="container-header">
+            <div class="logo"><strong>REKO</strong> Team</div>
+            <nav class="navigation">
+                <a href="#sluzby">Služby</a>
+                <a href="#o-nas">O nás</a>
+                <a href="#projekty">Projekty</a>
+                <a href="#kontakt">Kontakt</a>
+            </nav>
+            <button class="hamburger-menu" aria-label="Otevřít menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <a href="tel:+420722693881" class="cta-button-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                +420 722 693 881
+            </a>
+        </div>
+    </header>
 
     <main>
         <section class="hero-section">
@@ -42,113 +39,143 @@
                 <div class="hero-text">
                     <h1>Váš spolehlivý partner pro rekonstrukce a řemeslné práce <span class="highlight">v Praze, Mladé Boleslavi, Nymburku a Liberci.</span></h1>
                     <p>Komplexní řešení pro váš domov, od elektroinstalací po kompletní novostavby, s důrazem na kvalitu a spokojenost.</p>
-                    <form class="hero-form">
-                        <button type="submit" class="cta-button">Chci nezávaznou konzultaci</button>
+                    <div class="hero-form">
+                        <button type="button" class="cta-button" id="open-modal-btn-hero">Chci nezávaznou konzultaci</button>
                         <input type="email" placeholder="info@rekoteam.cz" disabled>
-                    </form>
-                    <p class="small-text">Nebo zavolejte +420 722 693 881 </p>
+                    </div>
+                    <p class="small-text">Nebo zavolejte +420 722 693 881</p>
                 </div>
                 <div class="hero-contact-box">
                     <h4>Proč si vybrat nás?</h4>
                     <ul>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <div>
-                                <p><strong>Komplexní služby</strong></p>
-                                <p>Zajišťujeme široké spektrum prací – od elektroinstalací, instalatérských prací a zateplování fasád po výměnu oken, dveří a kompletní rekonstrukce.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <div>
-                                <p><strong>Řešení na klíč</strong></p>
-                                <p>Realizujeme také instalace elektrických GSM bran, výměny zámků, řešení vytápění a bojlerů, včetně novostaveb.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <div>
-                                <p><strong>Extra servis</strong></p>
-                                <p>Nabízíme i kompletaci nábytku a energetické poradenství pro váš naprostý komfort.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <div>
-                                <p><strong>Kvalita a dlouhodobá spokojenost</strong></p>
-                                <p>Naše řešení nejen fungují, ale také přetrvávají, čímž vám zajistíme dlouhodobý klid.</p>
-                            </div>
-                        </li>
+                        <li><span class="check-icon">✓</span><div><p><strong>Komplexní služby</strong></p><p>Zajišťujeme široké spektrum prací – od elektroinstalací, instalatérských prací a zateplování fasád po výměnu oken, dveří a kompletní rekonstrukce.</p></div></li>
+                        <li><span class="check-icon">✓</span><div><p><strong>Řešení na klíč</strong></p><p>Realizujeme také instalace elektrických GSM bran, výměny zámků, řešení vytápění a bojlerů, včetně novostaveb.</p></div></li>
+                        <li><span class="check-icon">✓</span><div><p><strong>Extra servis</strong></p><p>Nabízíme i kompletaci nábytku a energetické poradenství pro váš naprostý komfort.</p></div></li>
+                        <li><span class="check-icon">✓</span><div><p><strong>Kvalita a dlouhodobá spokojenost</strong></p><p>Naše řešení nejen fungují, ale také přetrvávají, čímž vám zajistíme dlouhodobý klid.</p></div></li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section class="services-section" id="sluzby">
-            <div class="container">
-                <h2>S čím Vám pomůžeme</h2>
-                <p class="section-subtitle">Zajišťujeme vše od drobných oprav až po kompletní rekonstrukce bytů, domů a novostaveb. Specializujeme se na klíčové řemeslné obory, abychom vám zaručili profesionální a kvalitní výsledek.</p>
+       <section class="services-section" id="sluzby">
+    <div class="container">
+        <h2>S čím Vám pomůžeme</h2>
+        <p class="section-subtitle">Zajišťujeme vše od drobných oprav až po kompletní rekonstrukce bytů, domů a novostaveb. Specializujeme se na klíčové řemeslné obory, abychom vám zaručili profesionální a kvalitní výsledek.</p>
+        
+        <div class="slider-wrapper">
+            <button id="services-slide-left" class="slide-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="slider-container">
                 <div class="services-grid">
+                    
                     <div class="service-card">
-                        <div class="service-icon">⚡️</div>
+                        <img src="Elektroinstalace_a_zabezpeceni.jpg" alt="Elektroinstalace a zabezpečení" class="service-image">
                         <h3>Elektroinstalace a zabezpečení</h3>
                         <p>Kompletní elektroinstalační práce od návrhu, přes realizaci až po revizní zprávy. Zabezpečíme váš majetek moderními systémy.</p>
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">💧</div>
+                        <img src="Voda, topeni a plyn.jpg" alt="Voda, topení a plyn" class="service-image">
                         <h3>Voda, topení a plyn</h3>
                         <p>Instalatérské a topenářské práce, včetně rozvodů vody, odpadů, topení a plynu. Řešíme havárie i nové instalace.</p>
                     </div>
-                     <div class="service-card">
-                        <div class="service-icon">🏗️</div>
+
+                    <div class="service-card">
+                        <img src="Stavebni prace a zatepleni.jpeg" alt="Stavební práce a zateplení" class="service-image">
                         <h3>Stavební práce a zateplení</h3>
                         <p>Zajišťujeme veškeré stavební úpravy, zednické práce, opravy, zateplení fasád a další práce pro vylepšení vašeho bydlení.</p>
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">🚪</div>
+                        <img src="branyapristupove.jpeg" alt="SDK a brány a přístupové systémy" class="service-image">
                         <h3>SDK a brány a přístupové systémy</h3>
                         <p>Montáž sádrokartonových konstrukcí, pojezdových i křídlových bran a moderních přístupových systémů s přihlašováním čipy pro vaše bezpečí.</p>
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">📦</div>
+                        <img src="montaznabytku.jpg" alt="Montáž nábytku a kompletace" class="service-image">
                         <h3>Montáž nábytku a kompletace</h3>
                         <p>Sestavíme a namontujeme nábytek z obchodních domů (IKEA, JYSK, SCONTO, XXXLutz atd.) a zajistíme kompletní zařízení vašeho interiéru.</p>
                     </div>
+
                     <div class="service-card">
-                        <div class="service-icon">✨</div>
+                        <img src="uklid.jpg" alt="Úklidové práce" class="service-image">
                         <h3>Úklidové práce</h3>
                         <p>Nabízíme profesionální úklidové služby po rekonstrukci i pravidelný úklid vaší domácnosti nebo komerčních prostor.</p>
                     </div>
-                </div>
-                 <button class="cta-button-secondary">Kontaktujte nás o více informací</button>
-            </div>
-        </section>
+                    
+                    <div class="service-card">
+                        <img src="konzultace.webp" alt="Konzultace a revize" class="service-image">
+                        <h3>KONZULTACE A REVIZE</h3>
+                        <p>Profesionální konzultace pro Váš projekt. Revize elektrických zařízení pro firmy a osoby.</p>
+                    </div>
 
+                    <div class="service-card">
+                        <img src="hluk.webp" alt="Ochrana proti hluku a vlhkosti" class="service-image">
+                        <h3>Ochrana proti hluku, vlhkosti</h3>
+                        <p>Izolace proti průniku vlhkosti, zajištění ventilace, protihlukové stěny.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <img src="rozvody.jpg" alt="Anténní sítě, rozvody, WiFi" class="service-image">
+                        <h3>ANTÉNNÍ SÍTĚ, ROZVODY, WiFI</h3>
+                        <p>Návrh, instalace a údržba anténních, internetových i Wi-Fi sítí pro firmy i domácnosti.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <img src="ochrana.webp" alt="Zabezpečovací systémy" class="service-image">
+                        <h3>ZABEZPEČOVACÍ SYSTÉMY</h3>
+                        <p>Návrh a instalace kamerových systémů, zabezpečení, alarmů a detektorů včetně servisu.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <img src="bojler.jpg" alt="Výměna a servis bojlerů" class="service-image">
+                        <h3>Výměna a servis bojlerů</h3>
+                        <p>Montáž a výměna elektrických bojlerů a zásobníků na teplou vodu. Nonstop servis.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <img src="ohrev.jpg" alt="Vytápění a ohřev vody" class="service-image">
+                        <h3>Vytápění a ohřev vody</h3>
+                        <p>Modernizace vytápění a ohřevu vody, úspora nákladů na bydlení, analýza výdajů.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <img src="zamok.jpeg" alt="Výměna zámků a čidel dveří" class="service-image">
+                        <h3>Výměna zámků a čidel dveří</h3>
+                        <p>Montáž a výměna elektrických zámku, dveřních čidel a přístupových čipů.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <img src="brana.jpg" alt="Elektrické GSM brány a vrata" class="service-image">
+                        <h3>ELEKTRICKÉ GSM BRÁNY a VRATA</h3>
+                        <p>Montáž samonosných bran, pojezdových bran, kyvných bran, vrat a pojezdů, GSM ovládání.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <img src="okno.jpg" alt="Výměna oken a dveří" class="service-image">
+                        <h3>VÝMĚNA OKEN A DVEŘÍ</h3>
+                        <p>Výměna a montáž plastových oken a dveří, hliníkových oken a dveří, renovace dřevěných oken značek Aluplast, Velux, Rehau, Schuco a dalších.</p>
+                    </div>
+
+                </div>
+            </div>
+            <button id="services-slide-right" class="slide-button">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div>
+    </div>
+</section>
         <section class="steps-section" id="o-nas">
             <div class="container">
                 <h2>Spolupráce s námi v pár jednoduchých krocích</h2>
                 <p class="section-subtitle">Naše práce je postavena na transparentnosti a jednoduchém procesu, který vám zaručí kvalitní výsledek.</p>
                 <div class="steps-grid">
-                    <div class="step-card">
-                        <span class="step-number">01</span>
-                        <p class="step-title">Konzultace a poradenství</p>
-                        <p class="step-description">Spojte se s námi, probereme vaše představy a navrhneme nejlepší postup.</p>
-                    </div>
-                    <div class="step-card">
-                        <span class="step-number">02</span>
-                        <p class="step-title">Cenová nabídka</p>
-                        <p class="step-description">Připravíme pro vás detailní a transparentní cenovou nabídku na míru.</p>
-                    </div>
-                    <div class="step-card">
-                        <span class="step-number">03</span>
-                        <p class="step-title">Profesionální realizace</p>
-                        <p class="step-description">V dohodnutém termínu se pustíme do práce. Dbáme na kvalitu, termíny a pořádek.</p>
-                    </div>
-                    <div class="step-card">
-                        <span class="step-number">04</span>
-                        <p class="step-title">Předání a spokojenost</p>
-                        <p class="step-description">Předáme vám hotové dílo a ujistíme se, že vše odpovídá vašim očekáváním.</p>
-                    </div>
+                    <div class="step-card"><span class="step-number">01</span><p class="step-title">Konzultace a poradenství</p><p class="step-description">Spojte se s námi, probereme vaše představy a navrhneme nejlepší postup.</p></div>
+                    <div class="step-card"><span class="step-number">02</span><p class="step-title">Cenová nabídka</p><p class="step-description">Připravíme pro vás detailní a transparentní cenovou nabídku na míru.</p></div>
+                    <div class="step-card"><span class="step-number">03</span><p class="step-title">Profesionální realizace</p><p class="step-description">V dohodnutém termínu se pustíme do práce. Dbáme na kvalitu, termíny a pořádek.</p></div>
+                    <div class="step-card"><span class="step-number">04</span><p class="step-title">Předání a spokojenost</p><p class="step-description">Předáme vám hotové dílo a ujistíme se, že vše odpovídá vašim očekáváním.</p></div>
                 </div>
             </div>
         </section>
@@ -157,71 +184,20 @@
             <div class="container">
                 <h2>Ukázky naší práce</h2>
                 <p class="section-subtitle">Podívejte se na naše realizace a přesvědčte se o kvalitě našich služeb.</p>
-                
-                <div class="gallery-filters">
-                    <button class="filter-button active" data-filter="all">Všechny projekty</button>
-                    <button class="filter-button" data-filter="rekonstrukce">Rekonstrukce</button>
-                    <button class="filter-button" data-filter="elektroinstalace">Elektroinstalace</button>
-                    <button class="filter-button" data-filter="voda">Voda, topení</button>
-                    <button class="filter-button" data-filter="exterier">Exteriér</button>
-                </div>
-
+                <div class="gallery-filters"><button class="filter-button active" data-filter="all">Všechny projekty</button><button class="filter-button" data-filter="rekonstrukce">Rekonstrukce</button><button class="filter-button" data-filter="elektroinstalace">Elektroinstalace</button><button class="filter-button" data-filter="voda">Voda, topení</button><button class="filter-button" data-filter="exterier">Exteriér</button></div>
                 <div class="slider-wrapper">
-                    <button id="slide-left" class="slide-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                    </button>
+                    <button id="gallery-slide-left" class="slide-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
                     <div class="slider-container">
                         <div class="gallery-grid">
-                            <div class="gallery-item" data-category="rekonstrukce">
-                                <img src="https://images.pexels.com/photos/3958953/pexels-photo-3958953.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 1">
-                                <div class="gallery-item-tag">Novinka</div>
-                                <div class="gallery-item-info">
-                                    <h3>Moderní koupelna s dřevěnými prvky</h3>
-                                    <p>Kompletní rekonstrukce koupelny včetně nových rozvodů a designových prvků.</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item" data-category="exterier">
-                                <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 2">
-                                <div class="gallery-item-tag">Novinka</div>
-                                <div class="gallery-item-info">
-                                    <h3>Nová fasáda a zateplení domu</h3>
-                                    <p>Realizace zateplení a nové fasády pro rodinný dům v Liberci.</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item" data-category="elektroinstalace">
-                                <img src="https://images.pexels.com/photos/5691557/pexels-photo-5691557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 3">
-                                <div class="gallery-item-tag">Novinka</div>
-                                <div class="gallery-item-info">
-                                    <h3>Elektroinstalace v bytě</h3>
-                                    <p>Nová elektroinstalace v rámci kompletní rekonstrukce bytu.</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item" data-category="voda">
-                                <img src="https://images.pexels.com/photos/8005396/pexels-photo-8005396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 4">
-                                <div class="gallery-item-info">
-                                    <h3>Výměna rozvodů vody</h3>
-                                    <p>Kompletní výměna vodovodních trubek a odpadů ve starším bytě.</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item" data-category="rekonstrukce">
-                                <img src="https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 5">
-                                <div class="gallery-item-info">
-                                    <h3>Rekonstrukce kuchyně</h3>
-                                    <p>Modernizace kuchyně na míru včetně instalace spotřebičů.</p>
-                                </div>
-                            </div>
-                            <div class="gallery-item" data-category="exterier">
-                                <img src="https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 6">
-                                <div class="gallery-item-info">
-                                    <h3>Pokládka zámkové dlažby</h3>
-                                    <p>Realizace příjezdové cesty a chodníků ze zámkové dlažby.</p>
-                                </div>
-                            </div>
+                            <div class="gallery-item" data-category="rekonstrukce"><img src="https://images.pexels.com/photos/3958953/pexels-photo-3958953.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 1"><div class="gallery-item-tag">Novinka</div><div class="gallery-item-info"><h3>Moderní koupelna s dřevěnými prvky</h3><p>Kompletní rekonstrukce koupelny včetně nových rozvodů a designových prvků.</p></div></div>
+                            <div class="gallery-item" data-category="exterier"><img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 2"><div class="gallery-item-tag">Novinka</div><div class="gallery-item-info"><h3>Nová fasáda a zateplení domu</h3><p>Realizace zateplení a nové fasády pro rodinný dům v Liberci.</p></div></div>
+                            <div class="gallery-item" data-category="elektroinstalace"><img src="https://images.pexels.com/photos/5691557/pexels-photo-5691557.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 3"><div class="gallery-item-tag">Novinka</div><div class="gallery-item-info"><h3>Elektroinstalace v bytě</h3><p>Nová elektroinstalace v rámci kompletní rekonstrukce bytu.</p></div></div>
+                            <div class="gallery-item" data-category="voda"><img src="https://images.pexels.com/photos/8005396/pexels-photo-8005396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 4"><div class="gallery-item-info"><h3>Výměna rozvodů vody</h3><p>Kompletní výměna vodovodních trubek a odpadů ve starším bytě.</p></div></div>
+                            <div class="gallery-item" data-category="rekonstrukce"><img src="https://images.pexels.com/photos/2089698/pexels-photo-2089698.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 5"><div class="gallery-item-info"><h3>Rekonstrukce kuchyně</h3><p>Modernizace kuchyně na míru včetně instalace spotřebičů.</p></div></div>
+                            <div class="gallery-item" data-category="exterier"><img src="https://images.pexels.com/photos/259950/pexels-photo-259950.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ukázka práce 6"><div class="gallery-item-info"><h3>Pokládka zámkové dlažby</h3><p>Realizace příjezdové cesty a chodníků ze zámkové dlažby.</p></div></div>
                         </div>
                    </div>
-                    <button id="slide-right" class="slide-button">
-                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </button>
+                    <button id="gallery-slide-right" class="slide-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
                 </div>
            </div>
         </section>
@@ -236,12 +212,23 @@
                 <span class="footer-contact-separator">|</span>
                 <a href="mailto:info@rekoteam.cz" class="footer-contact-item">info@rekoteam.cz</a>
             </div>
-            <p class="footer-copyright">
-                &copy; 2024 REKO Team. Všechna práva vyhrazena.
-            </p>
+            <p class="footer-copyright">&copy; 2024 REKO Team. Všechna práva vyhrazena.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script> 
+    <div id="contact-modal-overlay" class="modal-overlay">
+        <div id="contact-modal" class="modal-content">
+            <button id="close-modal-btn" class="close-button" aria-label="Zavřít okno">&times;</button>
+            <h2>Nezávazná poptávka</h2>
+            <p>Zanechte nám na sebe kontakt a my se vám co nejdříve ozveme.</p>
+            <form action="https://formspree.io/f/xyzjaepv" method="POST" class="contact-form">
+                <div class="form-group"><label for="email">Váš email:</label><input id="email" type="email" name="email" placeholder="napr. jan.novak@email.cz" required></div>
+                <div class="form-group"><label for="message">Vaše správa:</label><textarea id="message" name="message" rows="5" placeholder="Popište nám ve stručnosti váš projekt nebo dotaz..." required></textarea></div>
+                <div class="form-group"><button type="submit" class="cta-button">Odeslat poptávku</button></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

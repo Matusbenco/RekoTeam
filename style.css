@@ -19,6 +19,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -26,7 +27,6 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
     line-height: 1.6;
-    overflow-x: hidden; /* TOTO JE NAŠE RIEŠENIE */
 }
 
 .container, .container-header {
@@ -40,13 +40,13 @@ h1, h2, h3 {
     line-height: 1.2;
 }
 
-h1 { font-size: 2.8rem; center; margin-bottom: 1rem; }
+h1 { font-size: 2.8rem; }
 h2 { font-size: 2rem; text-align: center; margin-bottom: 1rem; }
 
 p.section-subtitle {
     text-align: center;
     max-width: 700px;
-    margin: 0 auto 3rem auto; /* <<< DVOJBODKA ZMENENÁ NA MEDZERU */
+    margin: 0 auto 3rem auto;
     color: #6b7280;
 }
 
@@ -132,7 +132,7 @@ a:hover {
     position: relative;
     color: var(--text-color-light);
     padding: 6rem 0;
-    background-image: url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-image: url('kabely5.JPG');
     background-size: cover;
     background-position: center;
 }
@@ -180,18 +180,19 @@ a:hover {
 }
 .check-icon { color: var(--reko-orange); }
 
-/* Služby */
+/* Služby - upravené pre slider */
 .services-section {
     padding: 4rem 0;
     background-color: var(--reko-gray-light);
+    overflow: hidden; /* Dôležité pre slider */
 }
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex; /* Zmena z grid na flex */
+    flex-wrap: nowrap;
     gap: 1.5rem;
     margin-top: 3rem;
+    transition: transform 0.5s ease-in-out;
 }
-/* OPRAVA: Vylepšené štýly pre kartu služby */
 .service-card {
     background-color: var(--background-color);
     padding: 2rem;
@@ -201,10 +202,13 @@ a:hover {
     height: 100%;
     display: flex;
     flex-direction: column;
+    /* Nastavenie šírky pre slider */
+    flex: 0 0 calc(33.333% - 1rem);
+    min-width: calc(33.333% - 1rem);
 }
 .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 .service-icon { font-size: 2rem; margin-bottom: 1rem; }
-.service-card h3 { margin-bottom: 0.5rem; }
+.service-card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
 .service-card p {
     color: #6b7280;
     flex-grow: 1; 
@@ -248,7 +252,7 @@ a:hover {
     color: #6b7280;
     font-size: 0.9rem;
     margin-top: 0.5rem;
-    flex-grow: 1; /* Zabezpečí rovnakú výšku kariet */
+    flex-grow: 1;
 }
 .step-card:hover .step-number,
 .step-card:hover .step-title {
@@ -271,6 +275,7 @@ a:hover {
 .work-gallery-section {
     padding: 4rem 0;
     background-color: var(--reko-gray-light);
+    overflow: hidden;
 }
 .gallery-filters {
     display: flex;
@@ -356,8 +361,10 @@ a:hover {
 }
 .slide-button:hover { background-color: white; transform: translateY(-50%) scale(1.1); }
 .slide-button:disabled { cursor: not-allowed; opacity: 0.4; }
-#slide-left { left: -20px; }
-#slide-right { right: -20px; }
+#gallery-slide-left { left: -20px; }
+#gallery-slide-right { right: -20px; }
+#services-slide-left { left: -20px; }
+#services-slide-right { right: -20px; }
 
 /* Pätička */
 .footer {
@@ -396,27 +403,8 @@ a:hover {
 /* Hamburger a Responzivita */
 .hamburger-menu {
     display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 2rem;
-    height: 2rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 10;
+    z-index: 101;
 }
-.hamburger-menu span {
-    width: 2rem;
-    height: 0.25rem;
-    background: var(--reko-gray-dark);
-    border-radius: 10px;
-    transition: all 0.3s linear;
-    transform-origin: 1px;
-}
-.hamburger-menu.open span:nth-child(1) { transform: rotate(45deg); }
-.hamburger-menu.open span:nth-child(2) { opacity: 0; transform: translateX(20px); }
-.hamburger-menu.open span:nth-child(3) { transform: rotate(-45deg); }
 
 @media (max-width: 768px) {
     body { padding-top: 61px; }
@@ -424,7 +412,7 @@ a:hover {
     h2 { font-size: 1.8rem; }
     .container, .container-header { padding: 0 15px; }
     .header {
-        padding: 0.75rem 15px; /* Upravený padding pre mobil */
+        padding: 0.75rem 0;
         position: fixed;
         width: 100%;
         top: 0;
@@ -433,23 +421,21 @@ a:hover {
     .cta-button-header { display: none; }
     .navigation {
         display: none;
-        position: fixed; /* Zmena na fixed, aby menu prekrylo obsah */
-        top: 61px; /* Výška hlavičky */
+        position: fixed;
+        top: 61px;
         left: 0;
         width: 100%;
-        height: calc(100vh - 61px); /* Výška na celú obrazovku pod hlavičkou */
+        height: calc(100vh - 61px);
         background-color: white;
         flex-direction: column; 
         align-items: center;
         padding: 2rem 0;
-        box-shadow: none;
-        border-top: 1px solid var(--border-color);
-        transform: translateX(-100%); /* Štandardne skryté mimo obrazovky */
-        transition: transform 0.3s ease-in-out; /* Animácia príchodu */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
     }
     .navigation.active { 
         display: flex;
-        transform: translateX(0); /* Zobrazí sa posunom do obrazovky */
+        transform: translateX(0);
     }
     .navigation a {
         margin: 0;
@@ -460,11 +446,34 @@ a:hover {
     }
     .hamburger-menu {
         display: flex;
-        z-index: 101; /* Musí byť nad navigáciou */
+        flex-direction: column;
+        justify-content: space-around;
+        width: 2rem;
+        height: 2rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
     }
+    .hamburger-menu span {
+        width: 2rem;
+        height: 0.25rem;
+        background: var(--reko-gray-dark);
+        border-radius: 10px;
+        transition: all 0.3s linear;
+        transform-origin: 1px;
+    }
+    .hamburger-menu.open span:nth-child(1) { transform: rotate(45deg); }
+    .hamburger-menu.open span:nth-child(2) { opacity: 0; transform: translateX(20px); }
+    .hamburger-menu.open span:nth-child(3) { transform: rotate(-45deg); }
+    
     .hero-section { padding: 4rem 0; }
     .hero-content { flex-direction: column; gap: 3rem; }
-    .services-grid { grid-template-columns: 1fr; }
+    
+    .service-card {
+        flex: 0 0 80%;
+        min-width: 80%;
+    }
     .steps-grid { grid-template-columns: 1fr; gap: 3rem; }
     .gallery-item { flex: 0 0 100%; min-width: 100%; }
     .slider-wrapper { width: 100%; }
@@ -472,8 +481,96 @@ a:hover {
         top: 40%;
         background-color: rgba(255, 255, 255, 0.7);
     }
-    #slide-left { left: 5px; }
-    #slide-right { right: 5px; }
+    #gallery-slide-left, #services-slide-left { left: 10px; }
+    #gallery-slide-right, #services-slide-right { right: 10px; }
+    
     .footer-contact-info { flex-direction: column; gap: 0.5rem; }
     .footer-contact-separator { display: none; }
+}
+
+/* Štýly pre Modálne Okno */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+.modal-overlay.visible {
+    display: flex;
+}
+.modal-content {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+}
+.modal-content h2 { margin-bottom: 0.5rem; }
+.modal-content p { margin-bottom: 2rem; color: #6b7280; }
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close-button:hover { color: var(--reko-gray-dark); }
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--reko-gray-dark);
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--reko-blue);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+.contact-form textarea { resize: vertical; }
+.contact-form button.cta-button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+/* ================================== */
+/* ===== ŠTÝLY PRE OBRÁZKY SLUŽIEB ===== */
+/* ================================== */
+
+.service-image {
+    width: 100%; /* Obrázok bude na celú šírku karty */
+    height: 180px; /* Všetky obrázky budú mať rovnakú výšku */
+    object-fit: cover; /* Kľúčová vlastnosť: Obrázok vyplní priestor bez deformácie (oreže sa, ak je to potrebné) */
+    margin-bottom: 1.5rem; /* Vytvorí medzeru pod obrázkom */
+    border-radius: 8px; /* Jemne zaoblí rohy obrázku */
 }
