@@ -657,3 +657,47 @@ align-items: center;
     padding: 1rem;
     font-size: 1.1rem;
 }
+
+
+/* ================================== */
+/* ===== ŠTÝLY PRE META ÚDAJE V PÄTIČKE ===== */
+/* ================================== */
+
+.footer-meta {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    border-top: 1px solid #4b5563;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Zabezpečí zalomenie na menších obrazovkách */
+    gap: 1rem;
+}
+
+/* Odstránime pôvodný štýl z copyrightu, keďže ho teraz manažuje .footer-meta */
+.footer-copyright {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.footer-credit a {
+    color: #cbd5e1; /* Mierne svetlejšia farba pre odkaz */
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-credit a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Úprava pre mobilné zariadenia, aby boli texty pod sebou a vycentrované */
+@media (max-width: 768px) {
+    .footer-meta {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
