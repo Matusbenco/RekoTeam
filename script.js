@@ -1,92 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // =================================================================
-    // ===== UNIVERZÁLNA FUNKCIA PRE INICIALIZÁCIU SLIDERA (s nekonečným cyklom) =====
-    // =================================================================
-    const initializeSlider = (sectionId, isGallery) => {
-        const section = document.getElementById(sectionId);
-        if (!section) return;
-
-        const sliderContainer = section.querySelector('.slider-container');
-        const sliderTrack = section.querySelector('.slider-container > div');
-        const prevBtn = section.querySelector('.slide-button[id*="-left"]');
-        const nextBtn = section.querySelector('.slide-button[id*="-right"]');
-        
-        if (!sliderContainer || !sliderTrack || !prevBtn || !nextBtn) return;
-
-        let currentIndex = 0;
-
-        const updateSlider = () => {
-            const items = isGallery ? sliderTrack.querySelectorAll('.gallery-item:not([style*="display: none"])') : sliderTrack.children;
-            if (items.length === 0) return;
-
-            const firstItem = items[0];
-            const style = window.getComputedStyle(sliderTrack);
-            const gap = parseFloat(style.gap) || 0;
-            const slideWidth = firstItem.offsetWidth + gap;
-
-            sliderTrack.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-        };
-
-        const getItemsThatFit = () => {
-            const firstItem = sliderTrack.querySelector('.service-card, .gallery-item');
-            if (!firstItem) return 1;
-            const itemWidth = firstItem.offsetWidth;
-            const style = window.getComputedStyle(sliderTrack);
-            const gap = parseFloat(style.gap) || 0;
-            return Math.max(1, Math.floor(sliderContainer.clientWidth / (itemWidth + gap)));
-        };
-
-        nextBtn.addEventListener('click', () => {
-            const items = isGallery ? sliderTrack.querySelectorAll('.gallery-item:not([style*="display: none"])') : sliderTrack.children;
-            const itemsThatFit = getItemsThatFit();
-            
-            if (currentIndex >= items.length - itemsThatFit) {
-                currentIndex = 0; // Z konca na začiatok
-            } else {
-                currentIndex++;
-            }
-            updateSlider();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            const items = isGallery ? sliderTrack.querySelectorAll('.gallery-item:not([style*="display: none"])') : sliderTrack.children;
-            const itemsThatFit = getItemsThatFit();
-
-            if (currentIndex === 0) {
-                currentIndex = items.length - itemsThatFit; // Zo začiatku na koniec
-                // Musíme ošetriť prípad, ak je menej položiek, ako sa zmestí na obrazovku
-                if (currentIndex < 0) currentIndex = 0;
-            } else {
-                currentIndex--;
-            }
-            updateSlider();
-        });
-
-        // Počiatočná a responzívna inicializácia
-        setTimeout(() => updateSlider(), 100);
-        window.addEventListener('resize', () => {
-            currentIndex = 0;
-            updateSlider();
-        });
-    };
-
-    // =================================================================
-    // ===== INICIALIZÁCIA JEDNOTLIVÝCH SLIDEROV =====
-    // =================================================================
-
-    // Inicializácia slidera pre služby
-    initializeSlider('sluzby', false);
-    
-    // Inicializácia slidera pre galériu (projekty)
-    initializeSlider('projekty', true);
-
-
-    // =================================================================
-    // ===== ZVYŠNÁ LOGIKA (MENU, FORMULÁR, FILTRE) =====
+    // ===== ZÁKLADNÁ LOGIKA (MENU, FORMULÁR) =====
     // =================================================================
     
-    // Elementy pre ostatné funkcie
     const navLinks = document.querySelectorAll('.navigation a[href^="#"]');
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navigation = document.querySelector('.navigation');
@@ -97,8 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('open-modal-btn-hero'),
         document.querySelector('.cta-button-secondary')
     ];
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const filterButtons = document.querySelectorAll('.filter-button');
 
     // Mobilné Menu (Hamburger)
     if (hamburgerMenu) {
@@ -127,24 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Logika filtrovania pre galériu
-    if (filterButtons.length) {
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const filter = button.getAttribute('data-filter');
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                galleryItems.forEach(item => {
-                    const category = item.getAttribute('data-category');
-                    // Namiesto display:none, ktoré odstraňuje prvok z DOMu pre výpočty, použijeme radšej viditeľnosť
-                    item.style.display = (filter === 'all' || filter === category) ? 'flex' : 'none';
-                });
-                // Po filtrovaní prepočítame slider galérie
-                initializeSlider('projekty', true);
-            });
-        });
-    }
-
     // Logika pre Modálne Okno
     const openModal = () => { if(modalOverlay) modalOverlay.classList.add('visible'); }
     const closeModal = () => { if(modalOverlay) modalOverlay.classList.remove('visible'); }
@@ -154,5 +51,132 @@ document.addEventListener('DOMContentLoaded', () => {
         modalOverlay.addEventListener('click', (e) => {
             if (e.target === modalOverlay) closeModal();
         });
+    }
+
+    // =================================================================
+    // ===== JEDNODUCHÁ LOGIKA PRE SLIDER SLUŽIEB (BEZ CYKLENIA) =====
+    // =================================================================
+    const servicesSection = document.getElementById('sluzby');
+    if (servicesSection) {
+        const sliderTrack = servicesSection.querySelector('.services-grid');
+        const prevBtn = servicesSection.querySelector('#services-slide-left');
+        const nextBtn = servicesSection.querySelector('#services-slide-right');
+        
+        let currentIndex = 0;
+
+        const updateServicesSlider = () => {
+            const items = sliderTrack.children;
+            if (items.length === 0) return;
+
+            const itemWidth = items[0].offsetWidth;
+            const gap = parseFloat(window.getComputedStyle(sliderTrack).gap);
+            const slideWidth = itemWidth + gap;
+
+            sliderTrack.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+            prevBtn.disabled = currentIndex === 0;
+            const itemsThatFit = Math.floor(sliderTrack.parentElement.clientWidth / slideWidth);
+            nextBtn.disabled = currentIndex >= items.length - itemsThatFit;
+        };
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex++;
+            updateServicesSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex--;
+            updateServicesSlider();
+        });
+
+        window.addEventListener('resize', () => {
+            currentIndex = 0;
+            updateServicesSlider();
+        });
+        setTimeout(updateServicesSlider, 150); // Mierne oneskorenie pre istotu
+    }
+
+
+    // =================================================================
+    // ===== UPRAVENÁ LOGIKA PRE SLIDER GALÉRIE (S CYKLENÍM) =====
+    // =================================================================
+    const gallerySection = document.getElementById('projekty');
+    if (gallerySection) {
+        const sliderTrack = gallerySection.querySelector('.gallery-grid');
+        const prevBtn = gallerySection.querySelector('#gallery-slide-left');
+        const nextBtn = gallerySection.querySelector('#gallery-slide-right');
+        const filterButtons = gallerySection.querySelectorAll('.filter-button');
+        
+        let galleryCurrentIndex = 0;
+
+        const getVisibleItems = () => Array.from(sliderTrack.children).filter(item => item.style.display !== 'none');
+
+        const updateGallerySlider = () => {
+            const visibleItems = getVisibleItems();
+            if (visibleItems.length === 0) return;
+
+            const itemWidth = visibleItems[0].offsetWidth;
+            const gap = parseFloat(window.getComputedStyle(sliderTrack).gap);
+            const slideWidth = itemWidth + gap;
+
+            sliderTrack.style.transform = `translateX(-${galleryCurrentIndex * slideWidth}px)`;
+        };
+
+        const getItemsThatFitGallery = () => {
+            const visibleItems = getVisibleItems();
+            if (visibleItems.length === 0) return 1;
+            const itemWidth = visibleItems[0].offsetWidth;
+            const gap = parseFloat(window.getComputedStyle(sliderTrack).gap);
+            return Math.max(1, Math.floor(sliderTrack.parentElement.clientWidth / (itemWidth + gap)));
+        };
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                Array.from(sliderTrack.children).forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    item.style.display = (filter === 'all' || item.getAttribute('data-category') === filter) ? 'flex' : 'none';
+                });
+                
+                galleryCurrentIndex = 0;
+                updateGallerySlider();
+            });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const visibleItems = getVisibleItems();
+            const itemsThatFit = getItemsThatFitGallery();
+            
+            // Ak sme na poslednej stránke, preskočíme na začiatok
+            if (galleryCurrentIndex >= visibleItems.length - itemsThatFit) {
+                galleryCurrentIndex = 0;
+            } else {
+                galleryCurrentIndex++;
+            }
+            updateGallerySlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const visibleItems = getVisibleItems();
+            const itemsThatFit = getItemsThatFitGallery();
+
+            // Ak sme na začiatku, preskočíme na koniec
+            if (galleryCurrentIndex === 0) {
+                galleryCurrentIndex = visibleItems.length - itemsThatFit;
+                if(galleryCurrentIndex < 0) galleryCurrentIndex = 0; // Ošetrenie pre prípad menšieho počtu položiek
+            } else {
+                galleryCurrentIndex--;
+            }
+            updateGallerySlider();
+        });
+
+        window.addEventListener('resize', () => {
+            galleryCurrentIndex = 0;
+            updateGallerySlider();
+        });
+        setTimeout(updateGallerySlider, 150);
     }
 });
